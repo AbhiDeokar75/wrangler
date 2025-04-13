@@ -1,0 +1,22 @@
+# AI Prompts Used During Wrangler Enhancement Assignment
+
+1. "How to modify an ANTLR grammar file to support new custom tokens like BYTE_SIZE and TIME_DURATION for data sizes and durations?"
+
+2. "Generate Java classes ByteSize and TimeDuration extending a base Token class that can parse strings like '10KB' or '1.5s' and return values in canonical units."
+
+3. "Help me write a directive for CDAP Wrangler that can aggregate byte sizes and durations from rows and output results in MB and seconds."
+
+4. "What's the best way to accumulate values across rows in a CDAP Wrangler aggregate directive?"
+
+5. "Suggest unit test cases for a ByteSize parser that supports various units like B, KB, MB, GB, including edge cases."
+
+6. "Generate clean, maintainable Java code for parsing time duration strings (like '5ms', '3.2s') into milliseconds."
+
+7. "How to update the ANTLR visitor in Wrangler to correctly interpret custom grammar rules for BYTE_SIZE and TIME_DURATION?"
+
+8. "Give a comprehensive JUnit test for a directive that calculates total and average of byte sizes and durations from input rows."
+
+9. "How do I use TestingRig in Wrangler to simulate recipe execution and assert output values?"
+
+10. "Best practices for writing a README section that explains how to use new token types and directives in CDAP Wrangler."
+
