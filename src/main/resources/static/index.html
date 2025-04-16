@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>ClickHouse Data Tool</title></head>
+<body>
+    <h1>ClickHouse <-> Flat File Tool</h1>
+    <form id="form">
+        <label>Source Type:</label>
+        <select name="sourceType">
+            <option value="ClickHouseToFile">ClickHouse → File</option>
+            <option value="FileToClickHouse">File → ClickHouse</option>
+        </select><br>
+        <input name="host" placeholder="Host"/><br>
+        <input name="port" placeholder="Port"/><br>
+        <input name="database" placeholder="Database"/><br>
+        <input name="user" placeholder="User"/><br>
+        <input name="jwtToken" placeholder="JWT Token"/><br>
+        <input name="filePath" placeholder="File Path (CSV)"/><br>
+        <input name="delimiter" placeholder="Delimiter (, or ;)"/><br>
+        <input name="tableName" placeholder="Table Name"/><br>
+        <input name="selectedColumns" placeholder="Columns (comma-separated)"/><br>
+        <button type="submit">Start Ingestion</button>
+    </form>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById("form").onsubmit = async (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target).entries());
+            data.selectedColumns = data.selectedColumns.split(",");
+            const res = await fetch("/api/ingest", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+            const text = await res.text();
+            document.getElementById("output").innerText = text;
+        };
+    </script>
+</body>
+</html>
